@@ -9,7 +9,15 @@ import SwiftUI
 
 struct SineView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            SineWaveView(fillColor: .blue, height: 200)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+            
+            SineWaveView(fillColor: .blue, height: 200)
+                .rotationEffect(Angle(degrees: 180))
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+        }
+        .ignoresSafeArea()
     }
 }
 
