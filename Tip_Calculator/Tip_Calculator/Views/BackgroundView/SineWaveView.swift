@@ -9,13 +9,13 @@ import SwiftUI
 
 struct SineWaveView: View {
     
-    @State private var amplitude: CGFloat = 0.0
+    @State private var amplitude: CGFloat? = 0.0
     let fillColor: Color
-    let Height: CGFloat?
+    let height: CGFloat?
     
-    init(fillColor: Color, Height: CGFloat? = nil) {
+    init(fillColor: Color, height: CGFloat? = nil) {
         self.fillColor = fillColor
-        self.Height = Height
+        self.height = height
     }
     
     var body: some View {
@@ -25,14 +25,37 @@ struct SineWaveView: View {
             .frame(height: amplitude)
             .onAppear {
                 withAnimation(.bouncy(duration: 2, extraBounce: 0.5)) {
-                    // More to come...
+                    amplitude = height
                 }
             }
     }
 }
 
 #Preview {
-    SineWaveView(fillColor: .green, Height: 200)
+    SineWaveView(fillColor: .green, height: 200)
 }
 
-
+struct SineWave: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        let width = rect.width
+        let height = rect.height
+        let delta = rect.height / 2.0
+        let midY = rect.midY
+        
+        // Go to left center
+        path.move(to: CGPoint(x: 0, y: midY))
+        // draw curve from left center
+        path.addCurve(to: CGPoint(x: width, y: midY),
+                      control1: CGPoint(x: 0.25*width, y: midY-delta),
+                      control2: CGPoint(x: 0.75*width, y: midY+delta))
+        
+        // Add thickness
+        path.addLine(to: CGPoint(x: width, y: midY-height/2))
+        
+        // Extend left
+        path.addLine(to: CGPoint(x: 0, y: midY-height/2))
+        
+        return path
+    }
+}
