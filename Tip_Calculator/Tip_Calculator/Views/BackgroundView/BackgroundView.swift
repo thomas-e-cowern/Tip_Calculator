@@ -9,7 +9,14 @@ import SwiftUI
 
 struct BackgroundView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Color
+                .white
+                .opacity(0.9)
+                .ignoresSafeArea()
+            
+            SineView()
+        }
     }
 }
 
