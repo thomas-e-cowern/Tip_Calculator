@@ -8,8 +8,18 @@
 import SwiftUI
 
 struct TestColorsView: View {
+    
+    let colors: [Color] = [.red, .blue, .yellow, .green, .purple]
+    let dim: Double = 50.0
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            ForEach(self.colors, id: \.self) { color in
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(color)
+                    .frame(width: dim, height: dim)
+            }
+        }
     }
 }
 
