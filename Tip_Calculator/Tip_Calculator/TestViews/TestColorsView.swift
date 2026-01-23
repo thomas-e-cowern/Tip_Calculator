@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TestColorsView: View {
     
-    let colors: [Color] = [.red, .blue, .yellow, .green, .purple]
+    let colors: [Color] = [.charcoalWhite, .classicBlue, .indigoCalm, .mintFresh, .tealOcean, .warmCoral]
     let dim: Double = 50.0
     
     var body: some View {
