@@ -8,11 +8,22 @@
 import SwiftUI
 
 struct SubtotalView: View {
+    
+    let title: LocalizedStringKey
+    let titleFont: Font
+    let amount: String
+    let amountFont: Font
+    
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
 #Preview {
-    SubtotalView()
+    SubtotalView(
+        title: "Bill",
+        titleFont: .largeTitle,
+        amount: "19.99",
+        amountFont: .largeTitle
+    )
 }
