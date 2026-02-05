@@ -15,7 +15,17 @@ struct SubtotalView: View {
     let amountFont: Font
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text(title)
+                .font(titleFont)
+                .foregroundStyle(.secondary)
+            
+            Text(amount)
+                .font(amountFont)
+                .fontWeight(.bold)
+                .foregroundStyle(.myDarkGreen)
+        }
+        .frame(maxWidth: .infinity)
     }
 }
 
