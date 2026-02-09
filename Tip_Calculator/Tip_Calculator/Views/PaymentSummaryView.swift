@@ -8,11 +8,28 @@
 import SwiftUI
 
 struct PaymentSummaryView: View {
+    
+    let tipPercentage: Int
+    let split: Int
+    let bill: Double
+    
+    var font: Font = .headline
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GroupBox {
+            Text("Tip: \(tipPercentage)%")
+            Text("Split: \(split)")
+            Text("Total: \(bill)")
+        } label: {
+            Label("Summary", systemImage: "book")
+                .font(font)
+                .fontWeight(.semibold)
+                .foregroundStyle(.secondary)
+                .padding()
+        }
     }
 }
 
 #Preview {
-    PaymentSummaryView()
+    PaymentSummaryView(tipPercentage: 15, split: 2, bill: 100.00)
 }
