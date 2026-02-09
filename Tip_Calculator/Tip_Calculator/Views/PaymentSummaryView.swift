@@ -15,6 +15,18 @@ struct PaymentSummaryView: View {
     
     var font: Font = .headline
     
+    var totalPerPerson: String {
+        "300"
+    }
+    
+    var billPerPerson: String {
+        "150"
+    }
+    
+    var tipPerPerson: String {
+        "35"
+    }
+    
     var body: some View {
         GroupBox {
             Text("Tip: \(tipPercentage)%")
