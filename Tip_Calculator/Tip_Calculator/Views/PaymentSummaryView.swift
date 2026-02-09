@@ -29,9 +29,34 @@ struct PaymentSummaryView: View {
     
     var body: some View {
         GroupBox {
-            Text("Tip: \(tipPercentage)%")
-            Text("Split: \(split)")
-            Text("Total: \(bill)")
+            VStack {
+                SubtotalView(
+                    title: "Total Per Person",
+                    titleFont: font,
+                    amount: totalPerPerson,
+                    amountFont: font
+                )
+                .frame(
+                    maxHeight: .infinity
+                )
+                
+                HStack {
+                    SubtotalView(
+                        title: "Bill",
+                        titleFont: font,
+                        amount: billPerPerson,
+                        amountFont: font
+                    )
+                    
+                    SubtotalView(
+                        title: "Tip",
+                        titleFont: font,
+                        amount: tipPerPerson,
+                        amountFont: font
+                    )
+                }
+            }
+
         } label: {
             Label("Summary", systemImage: "book")
                 .font(font)
@@ -39,9 +64,22 @@ struct PaymentSummaryView: View {
                 .foregroundStyle(.secondary)
                 .padding()
         }
+        .backgroundStyle(.myLightGreen.opacity(0.8))
+        .clipShape(.rect(cornerRadius: 20))
     }
 }
 
 #Preview {
-    PaymentSummaryView(tipPercentage: 15, split: 2, bill: 100.00)
+    // Simulate with other view
+    VStack {
+        RoundedRectangle(cornerRadius: 20)
+            .fill(.blue)
+        
+        PaymentSummaryView(
+            tipPercentage: 15,
+            split: 2,
+            bill: 100.00
+        )
+    }
+    .padding()
 }
